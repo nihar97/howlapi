@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var Schema       = mongoose.Schema;
 var bcrypt 		 = require('bcrypt-nodejs');
-var post         = require(Post)
-var reply        = require(Reply)
+var post         = require(post)
+var reply        = require(reply)
 
 var UserSchema = new Schema ({
     name: {type: String, required: true},
