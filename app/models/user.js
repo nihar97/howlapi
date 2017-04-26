@@ -3,6 +3,8 @@ var Schema       = mongoose.Schema;
 var bcrypt 		 = require('bcrypt-nodejs');
 var post         = require(post)
 var reply        = require(reply)
+var PostSchema = mongoose.model('Post', post.PostSchema);
+var ReplySchema = mongoose.model('Reply', reply.ReplySchema);
 
 var UserSchema = new Schema ({
     name: {type: String, required: true},
@@ -14,8 +16,8 @@ var UserSchema = new Schema ({
     notifications: {type: Boolean, required: true},
     radius: {type: Number, required: true},
     img_url: type: String,
-    posts: type: post[],
-    replies: type: reply[]
+    posts: type: PostSchema[],
+    replies: type: ReplySchema[]
 });
 
 // hash the password before the user is saved
