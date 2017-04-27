@@ -1,4 +1,4 @@
-var express = require(express);
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser'); 	// get body-parser
 var morgan     = require('morgan'); 		// used to see requests
