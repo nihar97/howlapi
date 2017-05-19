@@ -16,10 +16,9 @@ var UserSchema = new Schema ({
     notifications: {type: Boolean, required: true},
     radius: {type: Number, required: true},
     img_url: type: String,
-    posts: type: PostSchema[],
-    replies: type: ReplySchema[]
+    posts: type: Number[],
+    replies: type: Number[]
 });
-
 // hash the password before the user is saved
 UserSchema.pre('save', function(next) {
 	var user = this;

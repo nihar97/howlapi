@@ -6,9 +6,12 @@ var user = require(user);
 var UserSchema = mongoose.model('User', user.UserSchema);
 var PostSchema = mongoose.model('Post', post.PostSchema);
 var ReplySchema = new Schema ({
+    replyId: type: Number,
     user: type: UserSchema,
     content: type: String,
     numLikes: type: Number,
     canVote: type: Boolean,
-    post: type: PostSchema
+    postId: type: Number
 });
+
+module.exports = mongoose.model('Reply', ReplySchema);

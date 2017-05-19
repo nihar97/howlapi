@@ -16,7 +16,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(morgan('dev'));
-// mongoose.connect(config.database); 
+mongoose.connect(config.database); 
 
 
 var apiRoutes = require('./app/routes/apiRouter')(app, express);
