@@ -5,6 +5,10 @@ var config = require('../../config.js');
 
 module.exports = function(app, express) {
     var router = express.Router();
+    router.get("/", function(req, res){
+        console.log("someone came")
+        res.json("Welcome to the howl api!")
+    });
     router.route("/users")
      .get(function(req, res){
         User.find({}, function(err, users){
@@ -15,16 +19,16 @@ module.exports = function(app, express) {
     })
 
     .post(function(req,res){
+        console.log("new user added");
         var user = new User();
-        user.name = req.body.name;
         user.userID = req.body.userID;
         user.password = req.body.password;
-        user.email = req.body.email;
         user.DOB = req.body.DOB;
         user.repscore = 0;
         user.notifications = req.body.notifications;
         user.radius = req.body.radius;
         user.img_url = req.body.img_url;
+        user.facebook_url = req.body.facebook_url;
         user.posts = [];
         user.replies = [];
 
@@ -52,15 +56,14 @@ module.exports = function(app, express) {
             User.findById(req.params.userID, function(err, user){
                 if(err) res.send(err);
 
-                if(req.body.name) user.name = req.body.name;
                 if(req.body.userID) user.userID = req.body.userID;
                 if(req.body.password) user.password = req.body.password;
-                if(req.body.email) user.email = req.body.email;
                 if(req.body.DOB) user.DOB = req.body.DOB;
                 if(req.body.repscore) user.repscore = req.body.repscore;
                 if(req.body.notifications) user.notifications = req.body.notifications;
                 if(req.body.radius) user.radius = req.body.radius;
                 if(req.body.img_url) user.img_url = req.img_url;
+                if(req.body.facebook_url) user.facebook_url = req.facebook_url;
                 if(req.body.post) user.posts = user.posts + req.body.post;
                 if(req.body.reply) user.replies = user.replies + req.body.reply;
 
@@ -115,4 +118,5 @@ module.exports = function(app, express) {
     router.get("/users/:user_id/posts", function(req, res){});
     router.get("/users/:user_id/replies", function(req, res){});
     router.get("/replies:reply_id", function(req, res){});
+    return router;
 };
