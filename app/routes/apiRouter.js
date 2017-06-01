@@ -53,9 +53,9 @@ module.exports = function(app, express) {
             });
         })
         .put(function(req, res){
-            User.findOne({'userId': req.params.user_id}, function(err, user){
+            User.findOne({'userID': req.params.user_id}, function(err, user){
                 if(err) res.send(err);
-
+                console.log("put request");
                 if(req.body.userID) user.userID = req.body.userID;
                 if(req.body.password) user.password = req.body.password;
                 if(req.body.DOB) user.DOB = req.body.DOB;
@@ -63,7 +63,7 @@ module.exports = function(app, express) {
                 if(req.body.notifications) user.notifications = req.body.notifications;
                 if(req.body.radius) user.radius = req.body.radius;
                 if(req.body.img_url) user.img_url = req.img_url;
-                if(req.body.facebook_url) user.facebook_url = req.facebook_url;
+                if(req.body.facebook_url) user.facebook_url = req.body.facebook_url;
                 if(req.body.post) user.posts = user.posts + req.body.post;
                 if(req.body.reply) user.replies = user.replies + req.body.reply;
 
@@ -74,6 +74,9 @@ module.exports = function(app, express) {
                 });
             });
         });
+    //     .delete(function(req, res) {
+    //         User.findOne({'userID': req.params.user_id}, function)
+    // });
     router.post("/authenticate", function(req, res){});
     router.route("/posts")
     .get(function(req, res){
