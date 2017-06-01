@@ -46,14 +46,14 @@ module.exports = function(app, express) {
 
     router.route("/users/:user_id")
         .get(function(req, res){
-            User.findById(req.params.userID, function(err, user){
+            User.findOne({'userID' : req.params.user_id}, function(err, user){
+                console.log("we reached here");
                 if(err) res.send(err);
-
                 res.json(user);
             });
         })
         .put(function(req, res){
-            User.findById(req.params.userID, function(err, user){
+            User.findOne({'userId': req.params.user_id}, function(err, user){
                 if(err) res.send(err);
 
                 if(req.body.userID) user.userID = req.body.userID;

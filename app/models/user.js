@@ -12,7 +12,7 @@ var UserSchema = new Schema ({
     notifications: {type: Boolean, required: true},
     radius: {type: Number, required: true},
     img_url: {type: String},
-	facebook_url: {type: String},
+	facebook_url: {type: String, required:true},
     posts: {type: [Number]},
     replies: {type: [Number]}
 });
