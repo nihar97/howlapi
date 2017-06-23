@@ -3,10 +3,8 @@ var Schema       = mongoose.Schema;
 
 var ReplySchema = new Schema ({
     replyId: {type: Number},
-    user: {type: String},
+    userID: {type: String},
     content: {type: String},
-    numLikes: {type: Number},
-    canVote: {type: Boolean},
     postId: {type: Number}
 });
 

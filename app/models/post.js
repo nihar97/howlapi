@@ -9,8 +9,6 @@ var PostSchema = new Schema({
     numReplies: {type: Number},
     replies: {type: [Number]},
     content: {type: String},
-    numLikes: {type: Number},
-    canVote: {type: Boolean},
     postId: {type: Number},
     categories: {type: [String]},
     timestamp:{type: Number},
